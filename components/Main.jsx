@@ -2,16 +2,20 @@ import {
   View,
   ActivityIndicator,
   FlatList,
+  Pressable,
   //Button,
   //TouchableHighlight,
 } from "react-native";
 import { useState, useEffect } from "react";
+import { Link } from "expo-router";
 //traer imagen local
 //import icono from "./assets/icon.png";
 import { getLatestGames } from "../lib/metacritic";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatedGameCard } from "./GameCard";
 import { Logo } from "./Logo";
+import { CircleInfoIcon } from "./Icons";
+import Screen from "./Screen";
 
 export function Main() {
   const [games, setGames] = useState([]);
@@ -24,10 +28,9 @@ export function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-      <View style={{ marginBottom: 20 }}>
-        <Logo />
-      </View>
+    <Screen
+    /* style={{ paddingTop: insets.top, paddingBottom: insets.bottom }} */
+    >
       {games.length === 0 ? (
         <ActivityIndicator color={"#fff"} size={"large"} />
       ) : (
@@ -77,6 +80,6 @@ export function Main() {
           <Text style={{ color: "white" }}>Presiona</Text>
         </TouchableHighlight>
         <Button color="green" title="Pulsa aquí" onPress={() => alert("Hola")} /> */}
-    </View>
+    </Screen>
   );
 }
